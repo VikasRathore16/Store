@@ -54,7 +54,7 @@
                             <path d="M21 21l-5.2-5.2" />
                         </svg>
                     </a>
-                    <a class="btn btn-sm btn-outline-secondary" href="../templates/Signup.html">Sign up</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="../templates/Signup.php">Sign up</a>
                 </div>
             </div>
         </header>

@@ -26,16 +26,16 @@
           <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link text-light" href="templates/login.html">Log In</a>
+                <a class="nav-link text-light" href="templates/login.php">Log In</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-light" href="templates/Signup.html">Sign Up</a>
+                <a class="nav-link text-light" href="templates/Signup.php">Sign Up</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-light" href="templates/dashboard.html">Dashboard</a>
+                <a class="nav-link text-light" href="templates/dashboard.php">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-light" href="templates/Blog.html">Blog</a>
+                <a class="nav-link text-light" href="templates/Blog.php">Blog</a>
               </li>
             </ul>
             <form class="d-flex">
