@@ -1,6 +1,8 @@
 <?php
+include_once("../Classes/DB.php");
 include_once("../Classes/User.php");
 include_once("../Classes/login.php");
+$status="";
 
 if (isset($_POST['submit'])) {
   $email = $_POST['email'];
@@ -9,7 +11,7 @@ if (isset($_POST['submit'])) {
   $password = $_POST['password'];
   $login = new LogIn($email, $password);
   $User = $login->getUser($email, $password);
-  $status =$User['status'];
+  $status =(isset($User['status']) ? $User['status'] : "not" );
   $username=$User['username'];
   if($username=="admin"){
     header('location: dashboard.php');
@@ -47,7 +49,7 @@ if (isset($_POST['submit'])) {
   <main class="form-signin">
     <form method="POST" action="">
       <img class="mb-4 bg-dark" src="../assests/imgs/cedcoss-logo.png" alt="" width="300" height="90">
-      <h1 class="h3 mb-3 fw-normal">Please Login in</h1>
+      <h1 class="h3 mb-3 fw-normal">Please Login</h1>
 
       <div class="form-floating mb-2">
         <input type="email" class="form-control" id="floatingInput" name="email" value="" placeholder="name@example.com" required>
@@ -70,10 +72,10 @@ if (isset($_POST['submit'])) {
       </div>
       <div class=" mb-3 small text-danger">
         <label>
-        <?php if($status==""){
+        <?php if($status=="not"){
           echo "Account Doesn't Exists. Please Sign Up";
         }
-        elseif($status=="Restricted"){
+        if($status=="Restricted"){
           echo "Wait for Account Approval";
         }
         ?>
