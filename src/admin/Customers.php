@@ -1,4 +1,14 @@
+<?php
+session_start();
+include_once("../Classes/DB.php");
+include_once("../Classes/User.php");
+include_once("../Classes/login.php");
+$users = new LogIn($_SESSION['admin'][0],$_SESSION['admin'][1]);
+// print_r($users->getAllUser());
+print_r($_SESSION['admin']);
 
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -102,7 +112,10 @@
       <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
 
       <h2>Customers</h2>
-      <div class="table-responsive">
+      <?php 
+      echo $users->getAllUser();
+      ?>
+      <!-- <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
@@ -131,9 +144,21 @@
               <td>220601</td>
               <td><button class="border-0">Edit </button><button class="border-0">Delete</button> </td>
             </tr>
+            <tr>
+              <td>100</td>
+              <td>Vikas Rathore</td>
+              <td>Vikas@123</td>
+              <td>Vikas</td>
+              <td>Rathore</td>
+              <td>Last Name</td>
+              <td>Role</td>
+              <td>Jankipuram</td>
+              <td>220601</td>
+              <td><button class="border-0">Edit </button><button class="border-0">Delete</button> </td>
+            </tr>
           </tbody>
         </table>
-      </div>
+      </div> -->
     </main>
 
 </div>

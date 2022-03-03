@@ -2,6 +2,9 @@
 include_once("../Classes/DB.php");
 include_once("../Classes/User.php");
 include_once("../Classes/login.php");
+
+session_start();
+
 $status="";
 
 if (isset($_POST['submit'])) {
@@ -14,6 +17,8 @@ if (isset($_POST['submit'])) {
   $status =(isset($User['status']) ? $User['status'] : "not" );
   $username=$User['username'];
   if($username=="admin"){
+    $_SESSION['admin']=array();
+    array_push($_SESSION['admin'],$email,$password);
     header('location: dashboard.php');
   }
   elseif($status=="Approved"){
