@@ -31,7 +31,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="../assests/css/dashboard.css" rel="stylesheet">
   </head>
   <body>
     

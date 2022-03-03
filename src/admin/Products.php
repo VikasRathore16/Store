@@ -31,7 +31,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="../assests/css/dashboard.css" rel="stylesheet">
   </head>
   <body>
     
@@ -60,13 +60,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="orders.php">
+            <a class="nav-link" href="orders.php">
               <span data-feather="file"></span>
               Orders
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Products.php">
+            <a class="nav-link active" href="Products.php">
               <span data-feather="shopping-cart"></span>
               Products
             </a>
@@ -77,13 +77,11 @@
               Customers
             </a>
           </li>
-          
+
         </ul>
 
-       
       </div>
     </nav>
-
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -101,33 +99,33 @@
       </div>
 
       <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
-
-      <h2>Orders</h2>
+      <div class="row">
+      <div class="col-8 h2">Products</div>
+      <div class="col-4 h5">
+      <button class="border rounded-pill mt-2 ms-5 ps-4 pe-4 btn" style="text-indent: 6px;">Add New Product </button>
+      </div>
+      </div>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th scope="col">Order ID</th>
-              <th scope="col">User ID</th>
-              <th scope="col">Status</th>
-              <th scope="col">Total Amount</th>
-              <th scope="col">Shipping Address</th>
-              <th scope="col">Shipping Pincode</th>
-              <th scope="col">Order Date</th>
-              <th scope="col">Delivery Date</th>
+              <th scope="col">Product ID</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Product Image</th>
+              <th scope="col">Product Category</th>
+              <th scope="col">Product Sale Price</th>
+              <th scope="col">Product List Price</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>300</td>
-              <td>100</td>
-              <td>Pending</td>
-              <td>$ 50</td>
-              <td>Delhi</td>
-              <td>110001</td>
-              <td>2022/03/03</td>
-              <td>2022/03/07</td>
+              <td>200</td>
+              <td>Mobile</td>
+              <td>mobile.png</td>
+              <td>Electronics</td>
+              <td>$ 200</td>
+              <td>$ 230</td>
               <td><button class="border-0">Edit </button><button class="border-0">Delete</button> </td>
             </tr>
           </tbody>

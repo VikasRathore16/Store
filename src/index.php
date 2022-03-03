@@ -1,4 +1,6 @@
-
+<?php
+require("Classes/DB.php");
+?>
   
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +20,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="">
-            <img src="imgs/cedcoss-logo.png" alt="Avatar Logo"  class="w-25"> 
+            <img src="../assests/imgs/cedcoss-logo.png" alt="Avatar Logo"  class="w-25"> 
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <span class="navbar-toggler-icon"></span>
@@ -26,16 +28,13 @@
           <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link text-light" href="templates/login.php">Log In</a>
+                <a class="nav-link text-light border" href="admin/index.php">Log In</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-light" href="templates/Signup.php">Sign Up</a>
+                <a class="nav-link text-light border" href="admin/Signup.php">Sign Up</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-light" href="templates/dashboard.php">Dashboard</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-light" href="templates/Blog.php">Blog</a>
+                <a class="nav-link text-light" href="admin/dashboard.php">Dashboard</a>
               </li>
             </ul>
             <form class="d-flex">
