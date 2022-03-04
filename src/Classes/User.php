@@ -82,7 +82,7 @@ class User extends DB
             <td>$v[address]</td>
             <td>$v[pincode]</td>
             <td>$v[status]</td>
-            <td><button class='border-0' name='userId' value='$v[userId]' onclick='console.log($v[userId])' id='edit' >Edit </button><button class='border-0' name='userId' value='$v[userId]' id='delete'>Delete</button> <button class='border-0 bg-primary text-light' name='userId' value='$v[userId]' id='status'>Approve</button> </td>
+            <td><button class='border-0' name='userId' value='$v[userId]' id='edit' data-userid ='$v[userId]' >Edit </button><button class='border-0' name='userId' value='$v[userId]' id='delete' data-userid ='$v[userId]'>Delete</button> <button class='border-0 bg-primary text-light' name='userId' value='$v[userId]' id='status' data-userid ='$v[userId]'>Approve</button> </td>
           </tr>";
         }
         $html.="</tr>
