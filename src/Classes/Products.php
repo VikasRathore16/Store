@@ -79,4 +79,8 @@ class Product
     </div>";
         return $html;
     }
+
+    public function category(){
+        
+    }
 }

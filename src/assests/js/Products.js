@@ -15,6 +15,7 @@ $(".table-responsive").on("click", "#edit", function (e) {
 
 
 
+
 $(".table-responsive").on("click", "#delete", function (e) {
     e.preventDefault();
     $trid = "#" + $(this).data("productid");
@@ -26,7 +27,6 @@ $(".table-responsive").on("click", "#delete", function (e) {
     }).done(function (data) {
         console.log(data);
         console.log("success");
-
         console.log($($trid).remove());
         // cart(data);
     });
