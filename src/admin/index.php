@@ -65,11 +65,11 @@ if (isset($_POST['submit'])) {
         <label for="floatingPassword">Password</label>
       </div>
 
-      <div class="checkbox mb-3">
+      <!-- <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me"> Remember me
         </label>
-      </div>
+      </div> -->
       <div class=" mb-3 small">
         <label>
         Don't have account ? <a href="Signup.php">Sign Up</a>
