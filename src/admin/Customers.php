@@ -5,7 +5,7 @@ include_once("../Classes/User.php");
 include_once("../Classes/login.php");
 $users = new LogIn($_SESSION['admin'][0],$_SESSION['admin'][1]);
 // print_r($users->getAllUser());
-print_r($_SESSION['admin']);
+// print_r($_SESSION['admin']);
 
 
 ?>
@@ -109,61 +109,19 @@ print_r($_SESSION['admin']);
         </div>
       </div>
 
-      <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+
 
       <h2>Customers</h2>
       <?php 
       echo $users->getAllUser();
       ?>
-      <!-- <div class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th scope="col">User ID</th>
-              <th scope="col">User Name</th>
-              <th scope="col">Password</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Role</th>
-              <th scope="col">Address</th>
-              <th scope="col">Pincode</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>100</td>
-              <td>Vikas Rathore</td>
-              <td>Vikas@123</td>
-              <td>Vikas</td>
-              <td>Rathore</td>
-              <td>Last Name</td>
-              <td>Role</td>
-              <td>Jankipuram</td>
-              <td>220601</td>
-              <td><button class="border-0">Edit </button><button class="border-0">Delete</button> </td>
-            </tr>
-            <tr>
-              <td>100</td>
-              <td>Vikas Rathore</td>
-              <td>Vikas@123</td>
-              <td>Vikas</td>
-              <td>Rathore</td>
-              <td>Last Name</td>
-              <td>Role</td>
-              <td>Jankipuram</td>
-              <td>220601</td>
-              <td><button class="border-0">Edit </button><button class="border-0">Delete</button> </td>
-            </tr>
-          </tbody>
-        </table>
-      </div> -->
+    
     </main>
 
 </div>
 </div>
-
+      <script src="../assests/js/script.js" ></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 

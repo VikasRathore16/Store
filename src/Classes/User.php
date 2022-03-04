@@ -24,6 +24,19 @@ class User extends DB
         DB::getInstance()->exec("INSERT INTO Users (username, firstName, lastName, email, password)  VALUES ('$this->username', '$this->firstName' ,'$this->lastName','$this->email','$this->password')");
     }
 
+    public function deleteUser($userId){
+      $sql = DB::getInstance()->prepare("Select * from Users where userId = '$userId' ");
+      $sql->execute();
+      $result = $sql->setFetchMode(PDO::FETCH_ASSOC);
+      
+      foreach ((new RecursiveArrayIterator($sql->fetchAll())) as $k => $v) {
+        
+          return ($v);
+       
+      }
+
+    }
+
     public function getUser($email, $password)
     {
         $sql = DB::getInstance()->prepare("Select * from Users where email ='$email' and password = '$password' ");
@@ -69,8 +82,7 @@ class User extends DB
             <td>$v[address]</td>
             <td>$v[pincode]</td>
             <td>$v[status]</td>
-            
-            <td><button class='border-0'>Edit </button><button class='border-0'>Delete</button> <button class='border-0 bg-primary text-light'>Approve</button> </td>
+            <td><button class='border-0' name='userId' value='$v[userId]' onclick='console.log($v[userId])' id='edit' >Edit </button><button class='border-0' name='userId' value='$v[userId]' id='delete'>Delete</button> <button class='border-0 bg-primary text-light' name='userId' value='$v[userId]' id='status'>Approve</button> </td>
           </tr>";
         }
         $html.="</tr>
