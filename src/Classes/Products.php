@@ -59,7 +59,7 @@ class Product
             $html .= "<tr id='$v[productId]'>
             <td>$v[productId]</td>
             <td>$v[productName]</td>
-            <td>$v[productImage]</td>
+            <td><img src='../assests/productsImages/$v[productImage]' style='width:80px;height:80px'></td>
             <td>$v[productCategory]</td>
             <td>$v[productSalePrice]</td>
             <td>$v[productCostPrice]</td>

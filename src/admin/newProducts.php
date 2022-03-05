@@ -13,8 +13,9 @@ if ($_SESSION['admin'][0] == $email && $_SESSION['admin'][1] == $password) {
     $admin->getAllProducts();
 }
 if (isset($_POST['submit'])) {
+    
     $productName = $_POST['productName'];
-    $productImage = isset($_POST['productImage']) ? $_POST['productImage'] : '';
+    $productImage = isset($_FILES['productImage']['name']) ? $_FILES['productImage']['name'] : '';
     $productCategory = $_POST['productCategory'];
     $productSalePrice = $_POST['productSalePrice'];
     $productCostPrice = $_POST['productCostPrice'];
@@ -25,10 +26,19 @@ if (isset($_POST['submit'])) {
         $productSalePrice,
         $productCostPrice
     );
-    print_r($_POST);
-    echo "ProductImage".$productImage;
-    // $newProduct->addProduct();
-    // header("location: Products.php");
+
+    if (move_uploaded_file($_FILES["productImage"]["tmp_name"], "../assests/productsImages/" . $_FILES["productImage"]["name"])) {
+        // print_r($_FILES);
+    //   echo  " File has been uploaded.";
+    //   echo "<br>";
+    //   array_push($_SESSION['image'], $_FILES["picture"]["name"]);
+    } else {
+      echo "Sorry, there was an error uploading your file.";
+    }
+    // print_r($_POST);
+    // echo "ProductImage".$productImage;
+     $newProduct->addProduct();
+    header("location: Products.php");
 }
 ?>
 
