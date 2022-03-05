@@ -29,20 +29,25 @@ require_once "vendor/autoload.php";
           </button>
           <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link text-light border" href="admin/index.php">Log In</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-light border" href="admin/Signup.php">Sign Up</a>
-              </li>
-              <li class="nav-item">
+              </li> -->
+              <!-- <li class="nav-item">
                 <a class="nav-link text-light" href="admin/dashboard.php">Dashboard</a>
-              </li>
-            </ul>
+              </li> -->
+            <li class="nav-item me-4">
             <form class="d-flex">
               <input class="form-control me-2" type="text" placeholder="Search">
               <button class="btn btn-primary" type="button">Search</button>
             </form>
+            </li>
+            <li class="nav-item float-end">
+                <a class="nav-link text-light border" href="admin/index.php">Log In</a>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
