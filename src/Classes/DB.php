@@ -1,4 +1,5 @@
 <?php
+namespace App;
 
     class DB
     {
@@ -9,11 +10,11 @@
             if(!isset(self::$instance))
             {
                 try {
-                    self::$instance = new PDO("mysql:host=mysql-server;dbname=Store_System","root","secret");
+                    self::$instance = new \PDO("mysql:host=mysql-server;dbname=Store_System","root","secret");
                     // set the PDO error mode to exception
-                    self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    self::$instance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
                     return self::$instance;      
-                  } catch(PDOException $e) {
+                  } catch(\PDOException $e) {
                     return $e->getMessage();
                   }
             }

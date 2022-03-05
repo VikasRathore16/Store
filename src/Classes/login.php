@@ -1,5 +1,5 @@
 <?php
-
+namespace App;
 class LogIn extends User{
     public string $email;
     public string $password;

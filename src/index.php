@@ -1,5 +1,7 @@
 <?php
-require("Classes/DB.php");
+
+require_once "vendor/autoload.php";
+
 ?>
   
 <!DOCTYPE html>

@@ -1,12 +1,34 @@
 <?php
+
+use App\LogIn;
+
+
+require_once "../vendor/autoload.php";
 session_start();
-include_once("../Classes/DB.php");
-include_once("../Classes/User.php");
-include_once("../Classes/login.php");
-$users = new LogIn($_SESSION['admin'][0],$_SESSION['admin'][1]);
 // print_r($users->getAllUser());
 // print_r($_SESSION['admin']);
 
+$action = $_POST['action'];
+$id = $_POST['id'];
+$status = $_POST['status'];
+$users = new LogIn($_SESSION['admin'][0],$_SESSION['admin'][1]);
+
+
+switch($action){
+  case "delete" :
+     echo json_encode($users->deleteUser($id));  
+     die();
+    break;
+  
+  case "status":
+    if($status=="Restricted")
+    echo json_encode($users->ApproveUser($id));
+    if($status=="Approved")
+    echo json_encode($users->RestrictUser($id));
+    die();
+    break;
+  
+}
 
 ?>
 <!doctype html>
@@ -114,17 +136,18 @@ $users = new LogIn($_SESSION['admin'][0],$_SESSION['admin'][1]);
       <h2>Customers</h2>
       <?php 
       echo $users->getAllUser();
+      
       ?>
     
     </main>
 
 </div>
 </div>
-      <script src="../assests/js/script.js" ></script>
+      <script src="../assests/js/script.js"  rel="text/javascript" ></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
 
-      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="../js/dashboard.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="../js/dashboard.js"></script> -->
   </body>
 </html>

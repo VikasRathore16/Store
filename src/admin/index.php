@@ -1,8 +1,11 @@
 <?php
-include_once("../Classes/DB.php");
-include_once("../Classes/User.php");
-include_once("../Classes/login.php");
+// include_once("../Classes/DB.php");
+// include_once("../Classes/User.php");
+// include_once("../Classes/login.php");
 
+use App\LogIn;
+
+require_once "../vendor/autoload.php";
 session_start();
 
 $status="";
@@ -65,11 +68,6 @@ if (isset($_POST['submit'])) {
         <label for="floatingPassword">Password</label>
       </div>
 
-      <!-- <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div> -->
       <div class=" mb-3 small">
         <label>
         Don't have account ? <a href="Signup.php">Sign Up</a>

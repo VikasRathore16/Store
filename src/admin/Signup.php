@@ -1,6 +1,8 @@
 <?php
-require("../Classes/DB.php");
-include_once("../Classes/User.php");
+
+use App\User;
+require_once "../vendor/autoload.php";
+
 if (isset($_POST['submit'])) {
   $username = $_POST['username'];
   $firstName = $_POST["firstName"];
