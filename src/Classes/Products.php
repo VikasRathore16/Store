@@ -2,16 +2,16 @@
 
 class Product
 {
-    public int $productId;
+    
     public int $productSalePrice;
     public int $productCostPrice;
     public string $productName;
     public string $productImage;
     public string $productCategory;
 
-    public function  __construct($productId, $productName, $productImage, $productCategory, $productSalePrice, $productCostPrice)
+    public function  __construct( $productName, $productImage, $productCategory, $productSalePrice, $productCostPrice)
     {
-        $this->productId = $productId;
+        // $this->productId = $productId;
         $this->productName = $productName;
         $this->productImage = $productImage;
         $this->productCategory = $productCategory;

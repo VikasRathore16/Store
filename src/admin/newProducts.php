@@ -1,17 +1,34 @@
 <?php
-include_once("../Classes/DB.php");
-include_once("../Classes/Products.php");
-include_once("../Classes/admin.php");
+include_once '../Classes/DB.php';
+include_once '../Classes/Products.php';
+include_once '../Classes/admin.php';
 
 session_start();
 
 $admin = new admin();
 $email = $admin->getadmin()['email'];
 $password = $admin->getadmin()['password'];
-if($_SESSION['admin'][0]==$email && $_SESSION['admin'][1] == $password ){
-
-    print_r($admin->getadmin());
+if ($_SESSION['admin'][0] == $email && $_SESSION['admin'][1] == $password) {
+    //  print_r($admin->getadmin());
     $admin->getAllProducts();
+}
+if (isset($_POST['submit'])) {
+    $productName = $_POST['productName'];
+    $productImage = isset($_POST['productImage']) ? $_POST['productImage'] : '';
+    $productCategory = $_POST['productCategory'];
+    $productSalePrice = $_POST['productSalePrice'];
+    $productCostPrice = $_POST['productCostPrice'];
+    $newProduct = new Product(
+        $productName,
+        $productImage,
+        $productCategory,
+        $productSalePrice,
+        $productCostPrice
+    );
+    print_r($_POST);
+    echo "ProductImage".$productImage;
+    // $newProduct->addProduct();
+    // header("location: Products.php");
 }
 ?>
 
@@ -55,7 +72,7 @@ if($_SESSION['admin'][0]==$email && $_SESSION['admin'][1] == $password ){
                     </div>
                     <div class="row tm-edit-product-row">
                         <div class="col-xl-6 col-lg-6 col-md-12">
-                            <form action="" class="tm-edit-product-form">
+                            <form action="" method="POST" class="tm-edit-product-form"  enctype="multipart/form-data">
                                 <div class="form-group mb-3">
                                     <label for="productName">Product Name
                                     </label>
@@ -87,13 +104,13 @@ if($_SESSION['admin'][0]==$email && $_SESSION['admin'][1] == $password ){
                                         <input id="productCostPrice" name="productCostPrice" type="text" class="form-control validate" required />
                                     </div>
                                 </div>
-                                <!-- <div class="custom-file mt-3 mb-3">
-                                <input id="fileInput" type="file" style="display:none;" />
-                                <input type="button" class="btn btn-primary btn-block mx-auto" value="UPLOAD PRODUCT IMAGE" />
-                            </div> -->
+                                <div class="custom-file mt-3 mb-3">
+                                <!-- <input id="fileInput" type="file" style="display:none;" /> -->
+                                <input type="file" class="btn btn-primary btn-block mx-auto"  name="productImage" />
+                            </div>
 
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
+                                    <button type="submit" name="submit" class="btn btn-primary btn-block text-uppercase" id="add">Add Product Now</button>
                                 </div>
                             </form>
                         </div>
