@@ -24,6 +24,7 @@ class ComposerStaticInitbfda33d7917cf36ccae228f5a4a54169
         'App\\DB' => __DIR__ . '/../..' . '/Classes/DB.php',
         'App\\LogIn' => __DIR__ . '/../..' . '/Classes/login.php',
         'App\\Product' => __DIR__ . '/../..' . '/Classes/Products.php',
+        'App\\Store' => __DIR__ . '/../..' . '/Classes/Store.php',
         'App\\User' => __DIR__ . '/../..' . '/Classes/User.php',
         'App\\admin' => __DIR__ . '/../..' . '/Classes/admin.php',
     );

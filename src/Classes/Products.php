@@ -81,7 +81,13 @@ class Product
         return $html;
     }
 
-    public function category(){
+    public function getProduct($id){
+      $sql = DB::getInstance()->prepare("Select * from Products where productId ='$id' ");
+    $sql->execute();
+    $result = $sql->setFetchMode(\PDO::FETCH_ASSOC);
+    foreach ((new \RecursiveArrayIterator($sql->fetchAll())) as $k => $v) {
+      return $v;
+    }
         
     }
 }
