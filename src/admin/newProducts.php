@@ -1,8 +1,9 @@
 <?php
-include_once '../Classes/DB.php';
-include_once '../Classes/Products.php';
-include_once '../Classes/admin.php';
 
+use App\admin;
+use App\Product;
+
+require_once "../vendor/autoload.php";
 session_start();
 
 $admin = new admin();

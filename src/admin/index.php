@@ -1,8 +1,11 @@
 <?php
-include_once("../Classes/DB.php");
-include_once("../Classes/User.php");
-include_once("../Classes/login.php");
+// include_once("../Classes/DB.php");
+// include_once("../Classes/User.php");
+// include_once("../Classes/login.php");
 
+use App\LogIn;
+
+require_once "../vendor/autoload.php";
 session_start();
 
 $status="";

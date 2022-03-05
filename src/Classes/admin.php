@@ -1,4 +1,6 @@
 <?php 
+namespace App;
+
  class admin extends Product {
      public string $email;
      public string $password;

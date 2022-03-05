@@ -1,5 +1,5 @@
 <?php
-
+namespace App;
 class User extends DB
 {
 
@@ -28,7 +28,7 @@ class User extends DB
   {
     $sql = DB::getInstance()->prepare("Delete from Users where userId = '$userId'");
     $sql->execute();
-    $sql->setFetchMode(PDO::FETCH_ASSOC);
+    $sql->setFetchMode(\PDO::FETCH_ASSOC);
     return "delete";
   }
 
@@ -53,8 +53,8 @@ class User extends DB
   {
     $sql = DB::getInstance()->prepare("Select * from Users where email ='$email' and password = '$password' ");
     $sql->execute();
-    $result = $sql->setFetchMode(PDO::FETCH_ASSOC);
-    foreach ((new RecursiveArrayIterator($sql->fetchAll())) as $k => $v) {
+    $result = $sql->setFetchMode(\PDO::FETCH_ASSOC);
+    foreach ((new \RecursiveArrayIterator($sql->fetchAll())) as $k => $v) {
       return $v;
     }
   }
@@ -63,7 +63,7 @@ class User extends DB
   {
     $sql = DB::getInstance()->prepare("Select * from Users");
     $sql->execute();
-    $sql->setFetchMode(PDO::FETCH_ASSOC);
+    $sql->setFetchMode(\PDO::FETCH_ASSOC);
     $html = "<div class='table-responsive'>
         <table class='table table-striped table-sm'>
           <thead>
@@ -82,7 +82,7 @@ class User extends DB
             </tr>
           </thead>
           <tbody>";
-    foreach ((new RecursiveArrayIterator($sql->fetchAll())) as $k => $v) {
+    foreach ((new \RecursiveArrayIterator($sql->fetchAll())) as $k => $v) {
       // print_r($v);
       $html .= "<tr id='$v[userId]'>
             <td>$v[userId]</td>
@@ -115,9 +115,9 @@ class User extends DB
   {
     $sql = DB::getInstance()->prepare("Select * from Users where email = '$email' ");
     $sql->execute();
-    $result = $sql->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $sql->setFetchMode(\PDO::FETCH_ASSOC);
 
-    foreach ((new RecursiveArrayIterator($sql->fetchAll())) as $k => $v) {
+    foreach ((new \RecursiveArrayIterator($sql->fetchAll())) as $k => $v) {
 
       return ($v);
     }

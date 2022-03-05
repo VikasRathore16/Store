@@ -1,4 +1,5 @@
 <?php
+namespace App;
 
 class Product
 {
@@ -30,7 +31,7 @@ class Product
     {
         $sql = DB::getInstance()->prepare("Delete from Products where productId = '$productId'");
         $sql->execute();
-        $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $sql->setFetchMode(\PDO::FETCH_ASSOC);
         return "delete";
     }
 
@@ -38,7 +39,7 @@ class Product
     {
         $sql = DB::getInstance()->prepare("Select * from Products");
         $sql->execute();
-        $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $sql->setFetchMode(\PDO::FETCH_ASSOC);
         $html = "<div class='table-responsive'>
         <table class='table table-striped table-sm'>
           <thead>
@@ -54,7 +55,7 @@ class Product
             </tr>
           </thead>
           <tbody>";
-        foreach ((new RecursiveArrayIterator($sql->fetchAll())) as $k => $v) {
+        foreach ((new \RecursiveArrayIterator($sql->fetchAll())) as $k => $v) {
             // print_r($v);
             $html .= "<tr id='$v[productId]'>
             <td>$v[productId]</td>
