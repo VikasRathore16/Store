@@ -26,7 +26,8 @@ class Store extends Product
         <div class='container'>
             <div class='row'>";
         foreach (
-            new \RecursiveArrayIterator($getQuery->fetchAll()) as $k => $v
+            new \RecursiveArrayIterator($getQuery->fetchAll())
+            as $k => $v
         ) {
             // echo '<br>';
             // print_r($v);
@@ -133,35 +134,54 @@ class Store extends Product
         return $html;
     }
 
-    public function header()
+    public function header($username='',$login = 'Login')
     {
-        return "<header>
-        <div class='bg-dark' id='navbarHeader'>
-          <div class='container'>
-            <div class='row'>
-              <div class='col-sm-8 col-md-7 py-4'>
-                <h4 class='text-white'><a href='../Store/cart.php'>Cart</a></h4>
-                <p class='text-muted'>Cart is empty now.</p>
-              </div>
-              <div class='col-sm-4 offset-md-1 py-4'>
-                <a href='../admin/Signout.php'> Signout </a>
-                <a href='../admin/index.php'> Login </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class='navbar navbar-dark bg-dark shadow-sm'>
-          <div class='container'>
-            <a href='../index.php' class='navbar-brand d-flex align-items-center'>
-              <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true' class='me-2' viewBox='0 0 24 24'><path d='M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z'/><circle cx='12' cy='13' r='4'/></svg>
-              <strong>SHOP</strong>
+        $html = "<header>
+        <nav class='navbar navbar-expand-sm'>
+        <div class='container'>
+            <a class='navbar-brand' href='../index.php'>
+                CEDCOSS
             </a>
-            <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarHeader' aria-controls='navbarHeader' aria-expanded='false' aria-label='Toggle navigation'>
-              <span class='navbar-toggler-icon'></span>
-            </button>
-          </div>
+            <ul class='navbar-nav m-2' style='font-weight: bold'>
+              ";
+        if ($login == 'Login') {
+            $html .= " <li class='nav-item  mx-2'>
+                      <a class='nav-link  text-dark' href='../admin/index.php'>$login</a>
+                    </li>";
+        }
+        else{
+          $html .= " <li class='nav-item  mx-2'>
+          <a class='nav-link  text-dark' href='../admin/Signout.php'>$username Signout</a>
+        </li>";
+        }
+        $html.="
+                <li class='nav-item dropdown mx-2'>
+                    <a class='nav-link dropdown-toggle text-dark'>Elements</a>
+                </li>
+                <li class='nav-item dropdown mx-2'>
+                    <a class='nav-link text-dark'>
+                        <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor'
+                            class='bi bi-cart' viewBox='0 0 16 16'>
+                            <path
+                                d='M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z' />
+                        </svg>
+                    </a>
+                </li>
+                <li class='nav-item dropdown mx-2'>
+                    <a class='nav-link text-dark'>
+                        <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor'
+                            class='bi bi-search' viewBox='0 0 16 16'>
+                            <path
+                                d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z' />
+                        </svg>
+                    </a>
+                </li>
+            </ul>
         </div>
+    </nav>
       </header>";
+
+      return $html;
     }
 
     public function footer()
@@ -204,5 +224,4 @@ class Store extends Product
         </div>
       </div>";
     }
-    
 }

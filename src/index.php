@@ -5,15 +5,16 @@ use App\Store;
 require_once 'vendor/autoload.php';
 
 session_start();
+$username = $_SESSION['username'][0];
 print_r($_SESSION['username']);
 $Store = new Store();
 
 $str = rand();
 $result = md5($str);
 if (!isset($_GET['page'])) {
-  $page_number = 1;
+    $page_number = 1;
 } else {
-  $page_number = $_GET['page'];
+    $page_number = $_GET['page'];
 }
 
 // $s='aasdasd';
@@ -40,7 +41,11 @@ if (!isset($_GET['page'])) {
 
 <body>
 
-  <?php echo $Store->header(); ?>
+  <?php if ($username != '') {
+      echo $Store->header($username, 'Logged');
+  } else {
+      echo $Store->header();
+  } ?>
 
   <div class="product-big-title-area">
     <div class="container">
