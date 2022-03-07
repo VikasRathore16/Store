@@ -22,6 +22,8 @@ class ComposerStaticInitbfda33d7917cf36ccae228f5a4a54169
 
     public static $classMap = array (
         'App\\DB' => __DIR__ . '/../..' . '/Classes/DB.php',
+        'App\\Footer' => __DIR__ . '/../..' . '/Classes/Storefooter.php',
+        'App\\Header' => __DIR__ . '/../..' . '/Classes/Storeheader.php',
         'App\\LogIn' => __DIR__ . '/../..' . '/Classes/login.php',
         'App\\Product' => __DIR__ . '/../..' . '/Classes/Products.php',
         'App\\Store' => __DIR__ . '/../..' . '/Classes/Store.php',

@@ -1,17 +1,22 @@
 <?php
+
 namespace App;
 
 class Product
 {
-    
     public int $productSalePrice;
     public int $productCostPrice;
     public string $productName;
     public string $productImage;
     public string $productCategory;
 
-    public function  __construct( $productName, $productImage, $productCategory, $productSalePrice, $productCostPrice)
-    {
+    public function __construct(
+        $productName,
+        $productImage,
+        $productCategory,
+        $productSalePrice,
+        $productCostPrice
+    ) {
         // $this->productId = $productId;
         $this->productName = $productName;
         $this->productImage = $productImage;
@@ -22,22 +27,24 @@ class Product
 
     public function addProduct()
     {
-        DB::getInstance()->exec("INSERT INTO Products (productName, productImage, productCategory, productSalePrice, productCostPrice) 
+        DB::getInstance()
+            ->exec("INSERT INTO Products (productName, productImage, productCategory, productSalePrice, productCostPrice) 
        VALUES ('$this->productName', '$this->productImage' ,'$this->productCategory','$this->productSalePrice','$this->productCostPrice')");
     }
 
-
     public function deleteProduct($productId)
     {
-        $sql = DB::getInstance()->prepare("Delete from Products where productId = '$productId'");
+        $sql = DB::getInstance()->prepare(
+            "Delete from Products where productId = '$productId'"
+        );
         $sql->execute();
         $sql->setFetchMode(\PDO::FETCH_ASSOC);
-        return "delete";
+        return 'delete';
     }
 
     public function getAllProducts()
     {
-        $sql = DB::getInstance()->prepare("Select * from Products");
+        $sql = DB::getInstance()->prepare('Select * from Products');
         $sql->execute();
         $sql->setFetchMode(\PDO::FETCH_ASSOC);
         $html = "<div class='table-responsive'>
@@ -55,7 +62,7 @@ class Product
             </tr>
           </thead>
           <tbody>";
-        foreach ((new \RecursiveArrayIterator($sql->fetchAll())) as $k => $v) {
+        foreach (new \RecursiveArrayIterator($sql->fetchAll()) as $k => $v) {
             // print_r($v);
             $html .= "<tr id='$v[productId]'>
             <td>$v[productId]</td>
@@ -81,13 +88,15 @@ class Product
         return $html;
     }
 
-    public function getProduct($id){
-      $sql = DB::getInstance()->prepare("Select * from Products where productId ='$id' ");
-    $sql->execute();
-    $result = $sql->setFetchMode(\PDO::FETCH_ASSOC);
-    foreach ((new \RecursiveArrayIterator($sql->fetchAll())) as $k => $v) {
-      return $v;
+    public function getProduct($id)
+    {
+        $sql = DB::getInstance()->prepare("Select * from Products where productId ='$id' ");
+        $sql->execute();
+        $result = $sql->setFetchMode(\PDO::FETCH_ASSOC);
+        foreach (new \RecursiveArrayIterator($sql->fetchAll()) as $k => $v) {
+            return $v;
+        }
     }
-        
-    }
+
+  
 }
