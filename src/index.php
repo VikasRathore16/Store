@@ -42,7 +42,14 @@ if (!isset($_GET['page'])) {
 <body>
 
   <?php if ($username != '') {
-      echo $Store->header($username, 'Logged');
+        if($_SESSION['cartItems']==True){
+          $cartItems = count($_SESSION['cartItems']);
+
+        }
+        else{
+          $cartItems=0;
+        }
+      echo $Store->header($username, 'Logged',$cartItems);
   } else {
       echo $Store->header();
   } ?>

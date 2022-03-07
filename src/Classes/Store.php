@@ -134,7 +134,7 @@ class Store extends Product
         return $html;
     }
 
-    public function header($username='',$login = 'Login')
+    public function header($username='',$login = 'Login' ,$cartItem = 0 )
     {
         $html = "<header>
         <nav class='navbar navbar-expand-sm'>
@@ -156,7 +156,7 @@ class Store extends Product
         }
         $html.="
                 <li class='nav-item dropdown mx-2'>
-                    <a class='nav-link dropdown-toggle text-dark'>Elements</a>
+                    <a class='nav-link  text-dark'>Cart <span class='badge bg-secondary'>$cartItem</span></a>
                 </li>
                 <li class='nav-item dropdown mx-2'>
                     <a class='nav-link text-dark'>
