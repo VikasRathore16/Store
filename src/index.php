@@ -46,10 +46,7 @@ $Store = new Store();
       <div class="collapse navbar-collapse" id="mynavbar">
         <ul class="navbar-nav me-auto">
           <li class="nav-item me-4">
-            <form class="d-flex">
-              <input class="form-control me-2" type="text" placeholder="Search">
-              <button class="btn btn-primary" type="button">Search</button>
-            </form>
+            
           </li>
           <li class="nav-item float-end">
             <a class="nav-link text-light border" href="admin/index.php">Log In</a>
@@ -69,6 +66,13 @@ $Store = new Store();
         </div>
       </div>
     </div>
+  </div>
+  <div class="row container">
+    <div class="col-12 justify-content-end mt-5">
+            <form class="d-flex" action='Store/Search.php' method="get">
+              <input class="form-control me-2" type="text" name='query' placeholder="Search by id or name">
+              <button class="btn btn-primary" type="submit">Search</button>
+            </form></div>
   </div>
   <div class="single-product-area">
     <?php
