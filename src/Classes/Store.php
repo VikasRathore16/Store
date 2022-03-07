@@ -25,7 +25,9 @@ class Store extends Product
         $html = "<div class='zigzag-bottom'></div>
         <div class='container'>
             <div class='row'>";
-        foreach (new \RecursiveArrayIterator($getQuery->fetchAll()) as $k => $v) {
+        foreach (
+            new \RecursiveArrayIterator($getQuery->fetchAll()) as $k => $v
+        ) {
             // echo '<br>';
             // print_r($v);
             // echo '<br>';
@@ -39,11 +41,11 @@ class Store extends Product
                <h2><a href='Store/single-product.php?productId=$v[productId]&productName=$v[productName]'>$v[productName]</a></h2>
                <div class='product-carousel-price'>
                    <ins>$$v[productSalePrice]</ins> <del>$$v[productCostPrice]</del>
-               </div>  
-               
+               </div>
+
                <div class='product-option-shop'>
-                   <a class='add_to_cart_button' data-quantity='1' data-product_sku='' data-product_id='$v[productId]' rel='nofollow' href='/canvas/shop/?add-to-cart=70'>Add to cart</a>
-               </div>                       
+                   <a class='add_to_cart_button' id='addToCart' data-quantity='1' data-product_sku='' data-product_id='$v[productId]' rel='nofollow'>Add to cart</a>
+               </div>
            </div>
        </div>";
         }
@@ -85,11 +87,11 @@ class Store extends Product
                     <h2><a href='Store/single-product.php?productId=$v[productId]&productName=$v[productName]'>$v[productName]</a></h2>
                     <div class='product-carousel-price'>
                         <ins>$$v[productSalePrice]</ins> <del>$$v[productCostPrice]</del>
-                    </div>  
-                    
+                    </div>
+
                     <div class='product-option-shop'>
                         <a class='add_to_cart_button' data-quantity='1' data-product_sku='' data-product_id='$v[productId]' rel='nofollow' href='/canvas/shop/?add-to-cart=70'>Add to cart</a>
-                    </div>                       
+                    </div>
                 </div>
             </div>";
         }
@@ -118,11 +120,11 @@ class Store extends Product
                   <h2><a href='Store/single-product.php?productId=$v[productId]&productName=$v[productName]'>$v[productName]</a></h2>
                   <div class='product-carousel-price'>
                       <ins>$$v[productSalePrice]</ins> <del>$$v[productCostPrice]</del>
-                  </div>  
-                  
+                  </div>
+
                   <div class='product-option-shop'>
                       <a class='add_to_cart_button' data-quantity='1' data-product_sku='' data-product_id='$v[productId]' rel='nofollow' href='/canvas/shop/?add-to-cart=70'>Add to cart</a>
-                  </div>                       
+                  </div>
               </div>
           </div>";
         }
@@ -134,29 +136,25 @@ class Store extends Product
     public function header()
     {
         return "<header>
-        <div class='collapse bg-dark' id='navbarHeader'>
+        <div class='bg-dark' id='navbarHeader'>
           <div class='container'>
             <div class='row'>
               <div class='col-sm-8 col-md-7 py-4'>
-                <h4 class='text-white'>Cart</h4>
+                <h4 class='text-white'><a href='../Store/cart.php'>Cart</a></h4>
                 <p class='text-muted'>Cart is empty now.</p>
               </div>
               <div class='col-sm-4 offset-md-1 py-4'>
-                <h4 class='text-white'>Contact</h4>
-                <ul class='list-unstyled'>
-                  <li><a href='#' class='text-white'>Follow on Twitter</a></li>
-                  <li><a href='#' class='text-white'>Like on Facebook</a></li>
-                  <li><a href='#' class='text-white'>Email me</a></li>
-                </ul>
+                <a href='../admin/Signout.php'> Signout </a>
+                <a href='../admin/index.php'> Login </a>
               </div>
             </div>
           </div>
         </div>
         <div class='navbar navbar-dark bg-dark shadow-sm'>
           <div class='container'>
-            <a href='#' class='navbar-brand d-flex align-items-center'>
+            <a href='../index.php' class='navbar-brand d-flex align-items-center'>
               <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true' class='me-2' viewBox='0 0 24 24'><path d='M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z'/><circle cx='12' cy='13' r='4'/></svg>
-              <strong>Shop</strong>
+              <strong>SHOP</strong>
             </a>
             <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarHeader' aria-controls='navbarHeader' aria-expanded='false' aria-label='Toggle navigation'>
               <span class='navbar-toggler-icon'></span>
@@ -189,7 +187,7 @@ class Store extends Product
                 <input type='text' class='form-control' id='inlineFormInputGroupUsername' name='query' placeholder='Product, SKU, Category'>
               </div>
             </div>
-    
+
             <div class='col-lg-3 col-12'>
               <label class='visually-hidden' for='inlineFormSelectPref'>Sort By</label>
               <select class='form-select' id='inlineFormSelectPref' name='sortby'>
@@ -199,11 +197,12 @@ class Store extends Product
                 <option value='3'>Popularity</option>
               </select>
             </div>
-    
+
             <div class='col-lg-3 col-12'>
               <button type='submit' class='btn btn-primary w-100'>Search</button>
             </div>
         </div>
       </div>";
     }
+    
 }

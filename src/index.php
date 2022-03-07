@@ -4,7 +4,21 @@ use App\Store;
 
 require_once 'vendor/autoload.php';
 
+session_start();
+print_r($_SESSION['username']);
 $Store = new Store();
+
+$str = rand();
+$result = md5($str);
+if (!isset($_GET['page'])) {
+  $page_number = 1;
+} else {
+  $page_number = $_GET['page'];
+}
+
+// $s='aasdasd';
+// echo substr($s,0,3);
+// echo $result;
 ?>
 
 <!DOCTYPE html>
@@ -39,14 +53,9 @@ $Store = new Store();
       </div>
     </div>
   </div>
-  <?php echo $Store->SearchBar() ?>
-  <div class="single-product-area">
-    <?php
-    // echo $_GET['page'];
-    
-    // echo $Store->getStore();
-    echo $Store->pagination($_GET['page']);
-    ?>
+  <?php echo $Store->SearchBar(); ?>
+    <div class="single-product-area">
+    <?php echo $Store->pagination($page_number); ?>
 
   </div>
 
@@ -54,5 +63,8 @@ $Store = new Store();
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="assests/js/cart.js"  rel="text/javascript"></script>
+
+
 
 </html>
