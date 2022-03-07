@@ -10,7 +10,7 @@ $(".single-product-area").on("click", "#addToCart", function (e) {
     }).done(function (data) {
         console.log("success");
         console.log(data);
-        // cart(data);
+       
     });
 });
 
@@ -28,7 +28,7 @@ $(".table").on("click", "#Remove", function (e) {
         console.log("success");
         console.log(data);
         location.reload();
-        // cart(data);
+    
     });
 });
 
@@ -43,9 +43,9 @@ $(".table").on("click", "#update", function (e) {
         data: { product_id: $(this).data("product_id"), action: "update" , quantity : $("#update"+id).val() },
         // dataType: "JSON",
     }).done(function (data) {
-        console.log("success");
-        console.log(data);
+        console.log('hello');
+        window.location.reload();
         // location.reload();
-        // cart(data);
+        
     });
 });

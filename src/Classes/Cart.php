@@ -78,7 +78,7 @@ class Cart
      *
      * @return void
      */
-    function displayCart()
+    public function displayCart()
     {
         $total = 0;
 
@@ -116,6 +116,30 @@ class Cart
         echo $html;
     }
 
-
-    
+    public function getCheckOutItems()
+    {
+        $html = " <ul class='list-group mb-3'>";
+        $total = 0;
+        foreach ($this->cart as $key => $value) {
+            $total += $value['productSalePrice'] * $value['quantity'];
+            $html .=
+                "<li class='list-group-item d-flex justify-content-between lh-sm'>
+            <div>
+              <h6 class='my-0'>$value[productName]</h6>
+              <small class='text-muted'>Total Quantity : $value[quantity]</small><br>
+              <small class='text-muted'>$" .
+                $value['productSalePrice'] * $value['quantity'] .
+                "</small>
+              </div>
+            <span class='text-muted'>$$value[productSalePrice]</span>
+          </li>";
+        }
+        $html .= "
+        <li class='list-group-item d-flex justify-content-between'>
+          <span>Total (USD)</span>
+          <strong>$$total</strong>
+        </li>
+      </ul>";
+        return $html;
+    }
 }

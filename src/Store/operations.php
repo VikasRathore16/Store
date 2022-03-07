@@ -53,10 +53,6 @@ switch ($action) {
         break;
 
     case 'update':
-        
-        // ;
-        print_r($quantity);
-        // $x = count($_SESSION['cartItems']);
         foreach ($_SESSION['cartItems'] as $key => $value) {
             if ($productId == $value['productId']) {
                 echo $value['quantity'];
@@ -68,9 +64,7 @@ switch ($action) {
         $cart = new Cart();
         $carrt = $_SESSION['cartItems'];
         $cart->setCart($carrt);
-         print_r($_SESSION['cartItems']);
-        echo json_encode($_SESSION['cartItems']);
-        // header('location: products.php');
+        echo json_encode('success');
         break;
 }
 ?>
