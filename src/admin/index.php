@@ -8,9 +8,11 @@ use App\LogIn;
 require_once "../vendor/autoload.php";
 session_start();
 
+
 $status="";
 
 if (isset($_POST['submit'])) {
+  
   $email = $_POST['email'];
   $password = $_POST['password'];
   $email = $_POST['email'];
@@ -25,6 +27,8 @@ if (isset($_POST['submit'])) {
     header('location: dashboard.php');
   }
   elseif($status=="Approved"){
+    $_SESSION['username']=array();
+    array_push($_SESSION['username'],$User);
     header('location: profile.php');
   }
 
