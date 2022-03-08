@@ -1,6 +1,7 @@
 <?php
 
 error_reporting(0);
+
 use App\Cart;
 
 require "../vendor/autoload.php";
@@ -37,16 +38,7 @@ session_start();
       }
     }
   </style>
-  <script>
-     function handleFormSubmit(form) {
-      popUp();
-      form.submit();
-    }
 
-    function popUp() {
-      alert("This is a test message");
-    }
-    </script>
 </head>
 
 <body class="bg-light">
@@ -64,87 +56,104 @@ session_start();
       <div class="py-5 text-center">
         <h2>Checkout form</h2>
       </div>
-
-      <div class="row g-5">
+      <div class='row g-5 h1' id='orderCompleted'>
+          Your order has been placed
+        </div>
+      <div class="row g-5" id="checkout">
+        
         <div class="col-md-5 col-lg-4 order-md-last">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-primary">Your cart</span>
             <span class="badge bg-primary rounded-pill"><?php echo count($_SESSION['cartItems']) ?></span>
           </h4>
           <?php $cart = new Cart();
-            $carrt = $_SESSION['cartItems'];
-            $cart->setCart($carrt);
-            echo $cart->getCheckOutItems();
-           ?>
+          $carrt = $_SESSION['cartItems'];
+          $cart->setCart($carrt);
+          echo $cart->getCheckOutItems();
+          ?>
 
 
         </div>
         <div class="col-md-7 col-lg-8 form">
           <h4 class="mb-3">Billing address</h4>
 
-          
+
           <!-- <form class="needs-validation" onSubmit="handleFormSubmit(this); return false;"> -->
-            <div class="row g-3">
-              <div class="col-sm-6">
+          <div class="row g-3">
+            <div class="col-sm-6">
 
-                <label for="firstName" class="form-label">First name</label>
-                <input type="text" class="form-control" id="firstName" value= "<?php echo $_SESSION['username'][0]['firstName']?>" placeholder="" >
-                <?php if($_SESSION['username'] == true ) {
-                   echo "<input type='hidden' class='form-control' id='cartItems' value=".count($_SESSION['cartItems'])."  placeholder='' >";
-                  echo "<input type='hidden' class='form-control' id='username' value='user exists'  placeholder='' >";
-                }
-                  else{
-                    echo "<input type='hidden' class='form-control' id='username' value='user not exists'  placeholder='' >";
-                  }
-                  ?>
-               
-               
-              </div>
-
-              <div class="col-sm-6">
-                <label for="lastName" class="form-label">Last name</label>
-                <input type="text" class="form-control" id="lastName"  value="<?php echo $_SESSION['username'][0]['lastName']?>" placeholder="" >
-
-              </div>
-
-              <div class="col-12">
-                <label for="email" class="form-label">Email </label>
-                <input type="email" class="form-control" id="email"  value="<?php echo $_SESSION['username'][0]['email']?>" placeholder="you@example.com" disabled >
-
-              </div>
-
-              <div class="col-12">
-                <label for="address" class="form-label">Address</label>
-                <input type="text" class="form-control" id="address"  value="<?php echo $_SESSION['username'][0]['address']?>" placeholder="1234 Main St" >
-
-              </div>
+              <label for="firstName" class="form-label">First name</label>
+              <?php if ($_SESSION['username'] == true) {
+                echo "<input type='text' class='form-control' id='firstName' value=" . $_SESSION['username'][0]['firstName'] . " placeholder='' disabled>";
+              } else {
+                echo "<input type='text' class='form-control' id='firstName' value='' placeholder='' >";
+              }
+              ?>
+              <?php if ($_SESSION['username'] == true) {
+                echo "<input type='hidden' class='form-control' id='cartItems' value=" . count($_SESSION['cartItems']) . "  placeholder='' >";
+                echo "<input type='hidden' class='form-control' id='username' value='user exists'  placeholder='' >";
+              } else {
+                echo "<input type='hidden' class='form-control' id='username' value='user not exists'  placeholder='' >";
+              }
+              ?>
 
 
-              <div class="col-md-5">
-                <label for="country" class="form-label">Country</label>
-                <input type="text" class="form-control" id="country"  value="<?php echo $_SESSION['username'][0]['country']?>" placeholder="" >
-
-
-              </div>
-
-              <div class="col-md-4">
-                <label for="state" class="form-label">State</label>
-                <input type="text" class="form-control" id="state"  value="<?php echo $_SESSION['username'][0]['state']?>" placeholder="" >
-
-              </div>
-
-              <div class="col-md-3">
-                <label for="zip" class="form-label">Pincode</label>
-                <input type="text" class="form-control" id="pincode"  value="<?php echo $_SESSION['username'][0]['pincode']?>" placeholder="" >
-                <div class="invalid-feedback">
-                  Zip code required.
-                </div>
-              </div>
             </div>
 
-            <hr class="my-4">
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Last name</label>
+              <?php if ($_SESSION['username'] == true) {
+                echo "<input type='text' class='form-control' id='lastName' value=" . $_SESSION['username'][0]['lastName'] . " placeholder='' disabled>";
+              } else {
+                echo "<input type='text' class='form-control' id='lastName' value='' placeholder='' >";
+              }
+              ?>
+              <!-- <input type="text" class="form-control" id="lastName" value="<?php echo $_SESSION['username'][0]['lastName'] ?>" placeholder=""> -->
 
-            <button class="w-100 btn btn-primary btn-lg" id='formSubmit' type="submit">Place Order</button>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email </label>
+              <?php if ($_SESSION['username'] == true) {
+                echo "<input type='email' class='form-control' id='email'  value=" . $_SESSION['username'][0]['email'] . " placeholder='you@example.com' disabled >";
+              } else {
+                echo "<input type='email' class='form-control' id='email'  value='' placeholder='you@example.com'  >";
+              }
+              ?>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" value="<?php echo $_SESSION['username'][0]['address'] ?>" placeholder="1234 Main St">
+
+            </div>
+
+
+            <div class="col-md-5">
+              <label for="country" class="form-label">Country</label>
+              <input type="text" class="form-control" id="country" value="<?php echo $_SESSION['username'][0]['country'] ?>" placeholder="">
+
+
+            </div>
+
+            <div class="col-md-4">
+              <label for="state" class="form-label">State</label>
+              <input type="text" class="form-control" id="state" value="<?php echo $_SESSION['username'][0]['state'] ?>" placeholder="">
+
+            </div>
+
+            <div class="col-md-3">
+              <label for="zip" class="form-label">Pincode</label>
+              <input type="text" class="form-control" id="pincode" value="<?php echo $_SESSION['username'][0]['pincode'] ?>" placeholder="">
+              <div class="invalid-feedback">
+                Zip code required.
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <button class="w-100 btn btn-primary btn-lg" id='formSubmit' type="submit">Place Order</button>
           <!-- </form> -->
         </div>
       </div>
@@ -164,4 +173,5 @@ session_start();
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="../assests/js/checkout.js" rel="text/javascript"></script>
+
 </html>
