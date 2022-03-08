@@ -15,13 +15,12 @@ $result = md5($str);
 if (!isset($_GET['page'])) {
     $page_number = 1;
 } else {
-    $page_number = $_GET['page'];
+     $page_number = $_GET['page'];
 }
 
 if ($_SESSION['username'] == true && $_SESSION['admin']) {
-  unset($_SESSION['username']);
+     unset($_SESSION['username']);
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -44,29 +43,27 @@ if ($_SESSION['username'] == true && $_SESSION['admin']) {
 <body>
 
   <?php
-  
+    if ($username != '') {
+        if ($_SESSION['cartItems'] == true) {
+             $cartItems = count($_SESSION['cartItems']);
+        } else {
+             $cartItems = 0;
+        }
+        echo $Store->header($username['username'], 'Logged', $cartItems);
+    }
+    if ($_SESSION['admin'] == true) {
+        if ($_SESSION['cartItems'] == true) {
+            $cartItems = count($_SESSION['cartItems']);
+        } else {
+            $cartItems = 0;
+        }
+        echo $Store->header('admin', 'Logged', $cartItems);
+    }
 
-  if ($username != '') {
-      if ($_SESSION['cartItems'] == true) {
-          $cartItems = count($_SESSION['cartItems']);
-      } else {
-          $cartItems = 0;
-      }
-      echo $Store->header($username['username'], 'Logged', $cartItems);
-  }
-  if ($_SESSION['admin'] == true) {
-    if ($_SESSION['cartItems'] == true) {
-      $cartItems = count($_SESSION['cartItems']);
-  } else {
-      $cartItems = 0;
-  }
-      echo $Store->header('admin', 'Logged', $cartItems);
-  }
-  
-  if($_SESSION['admin']==false && $_SESSION['username']==false) {
-      echo $Store->header();
-  }
-  ?>
+    if ($_SESSION['admin'] == false && $_SESSION['username'] == false) {
+         echo $Store->header();
+    }
+    ?>
 
   <div class="product-big-title-area">
     <div class="container">
@@ -80,7 +77,7 @@ if ($_SESSION['username'] == true && $_SESSION['admin']) {
     </div>
   </div>
   <?php echo $Store->SearchBar(); ?>
-    <div class="single-product-area">
+  <div class="single-product-area">
     <?php echo $Store->pagination($page_number); ?>
 
   </div>
@@ -89,7 +86,7 @@ if ($_SESSION['username'] == true && $_SESSION['admin']) {
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="assests/js/cart.js"  rel="text/javascript"></script>
+<script src="assests/js/cart.js" rel="text/javascript"></script>
 
 
 

@@ -1,5 +1,6 @@
 <?php
 namespace App;
+
 class User extends DB
 {
     public string $username;
@@ -39,12 +40,12 @@ class User extends DB
         return 'delete';
     }
 
-    public function updateDetails($userId,$address,$state,$country,$pincode)
+    public function updateDetails($userId, $address, $state, $country, $pincode)
     {
-      DB::getInstance()->exec(
-        "UPDATE Users SET  address = '$address', state= '$state' , country = '$country' , pincode='$pincode' where userId='$userId'"
-    );
-    return 1;
+        DB::getInstance()->exec(
+            "UPDATE Users SET  address = '$address', state= '$state' , country = '$country' , pincode='$pincode' where userId='$userId'"
+        );
+        return 1;
     }
     public function ApproveUser($userId)
     {

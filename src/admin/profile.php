@@ -16,6 +16,14 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : 'Do you want to update your Details'
 <html lang="en">
 
 <head>
+<header class='container p-0 mt-2'>
+
+    <div class="row">
+      <div class="col-12">
+        <a class='border-0 btn bg-dark text-light w-100 pt-2 pb-2' href='../index.php'>Back to Store</a>
+      </div>
+    </div>
+  </header> 
 
     <head>
         <title>Dashboard</title>
@@ -57,7 +65,7 @@ $msg = isset($_GET['msg']) ? $_GET['msg'] : 'Do you want to update your Details'
                     <div class="row mt-2">
                         <div class="col-md-7 col-lg-8">
                             <!-- <h4 class="mb-3">User details</h4> -->
-                            <form class="needs-validation" action="updateProfile.php" method='POST' novalidate >
+                            <form class="needs-validation" action="updateProfile.php" method='POST' >
                                 <div class="row g-3">
                                     <div class="col-sm-6">
                                         <label for="firstName" class="form-label">First name</label>
