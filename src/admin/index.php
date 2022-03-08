@@ -8,6 +8,7 @@ use App\LogIn;
 require_once "../vendor/autoload.php";
 session_start();
 
+
 $status="";
 
 if (isset($_POST['submit'])) {
@@ -27,7 +28,7 @@ if (isset($_POST['submit'])) {
   }
   elseif($status=="Approved"){
     $_SESSION['username']=array();
-    array_push($_SESSION['username'],$username,'Approved');
+    array_push($_SESSION['username'],$User);
     header('location: profile.php');
   }
 

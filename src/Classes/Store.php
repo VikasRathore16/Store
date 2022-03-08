@@ -156,7 +156,7 @@ class Store extends Product
         }
         $html.="
                 <li class='nav-item dropdown mx-2'>
-                    <a class='nav-link  text-dark'>Cart <span class='badge bg-secondary'>$cartItem</span></a>
+                    <a class='nav-link  text-dark' href='../Store/cart.php'>Cart <span class='badge bg-secondary'>$cartItem</span></a>
                 </li>
                 <li class='nav-item dropdown mx-2'>
                     <a class='nav-link text-dark'>
