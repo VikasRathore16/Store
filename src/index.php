@@ -6,7 +6,7 @@ require_once 'vendor/autoload.php';
 
 session_start();
 $username = $_SESSION['username'][0];
-print_r($_SESSION['username'][0]);
+
 $Store = new Store();
 
 $str = rand();

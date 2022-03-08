@@ -110,7 +110,7 @@ class User extends DB
             <td>$v[address]</td>
             <td>$v[pincode]</td>
             <td>$v[status]</td>
-            <td><button class='border-0 btn' name='userId' value='$v[userId]' id='edit' data-userid ='$v[userId]' >Edit </button>
+            <td>
             <button class='border-0 btn' name='userId' value='$v[userId]' id='delete' data-userid ='$v[userId]'>Delete</button> ";
             if ($v['status'] == 'Restricted') {
                 $html .= "<button class='border-0 btn text-light ps-3 pe-3' name='userId' value='$v[userId]' style='background-color:deepskyblue;'  id='status$v[userId]' data-sta data-status='$v[status]' data-userid ='$v[userId]'>Approve</button> </td>

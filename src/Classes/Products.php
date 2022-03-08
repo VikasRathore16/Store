@@ -71,7 +71,7 @@ class Product
             <td>$v[productCategory]</td>
             <td>$v[productSalePrice]</td>
             <td>$v[productCostPrice]</td>
-            <td><button class='border-0 btn' name='productId' value='$v[productId]' id='edit' data-productid ='$v[productId]' >Edit </button>
+            <td>
             <button class='border-0 btn' name='productId' value='$v[productId]' id='delete' data-productid ='$v[productId]'>Delete</button> ";
             //   if ($v['status'] == "Restricted") {
             //     $html .= "<button class='border-0 btn text-light ps-3 pe-3' name='userId' value='$v[userId]' style='background-color:deepskyblue;'  id='status$v[userId]' data-sta data-status='$v[status]' data-userid ='$v[userId]'>Approve</button> </td>
