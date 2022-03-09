@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+error_reporting(0);
 require_once "../vendor/autoload.php";
 
 if (isset($_POST['submit'])) {
