@@ -9,8 +9,7 @@ $username = $_SESSION['username'][0];
 
 $Store = new Store();
 
-$str = rand();
-$result = md5($str);
+
 
 if (!isset($_GET['page'])) {
     $page_number = 1;
@@ -87,7 +86,7 @@ if ($_SESSION['username'] == true && $_SESSION['admin']) {
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="assests/js/cart.js" rel="text/javascript"></script>
-
+<script src="assests/js/sortby.js" rel="text/javascript"></script>
 
 
 </html>

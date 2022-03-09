@@ -11,6 +11,7 @@ $(".single-product-area").on("click", "#addToCart", function (e) {
         console.log("success");
         console.log(data);
        
+       
     });
 });
 

@@ -2,15 +2,34 @@
 
 use App\Store;
 
-require "../vendor/autoload.php";
+error_reporting(E_ALL ^ E_NOTICE);
+require '../vendor/autoload.php';
 session_start();
-$search = new Store();
 
-$parameter = $_GET['query'];
+$action = isset($_POST['action']) ? $_POST['action'] : '';
+$value = isset($_POST['value']) ? $_POST['value'] : '';
+$parameter = isset($_GET['parameter']) ? $_GET['parameter'] : '';
+//  echo $parameter;
+ if($parameter=="Sort By"){
+     header('location: ../index.php');
+ }
 
 
+$store = new Store();
+
+switch ($value) {
+    case 1:
+        
+        $store->sortby(1);
+    //    
+        break;
+    case 2:
+        
+        $store->sortby(2);
+        break;
+}
+// echo $parameter;
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -46,30 +65,8 @@ $parameter = $_GET['query'];
     </style>
   </head>
   <body>
-  <?php
-    if ($username != '') {
-        if ($_SESSION['cartItems'] == true) {
-             $cartItems = count($_SESSION['cartItems']);
-        } else {
-             $cartItems = 0;
-        }
-        echo $search->header($username['username'], 'Logged', $cartItems);
-    }
-    if ($_SESSION['admin'] == true) {
-        if ($_SESSION['cartItems'] == true) {
-            $cartItems = count($_SESSION['cartItems']);
-        } else {
-            $cartItems = 0;
-        }
-        echo $search->header('admin', 'Logged', $cartItems);
-    }
-
-    if ($_SESSION['admin'] == false && $_SESSION['username'] == false) {
-         echo $search->header();
-    }
-    ?>
-    <?php
-    echo $search->getSearch($parameter);
-    ?>
+<?php
+echo $store->sortby($parameter);
+?>
   </body>
 </html>

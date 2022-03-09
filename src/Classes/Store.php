@@ -13,7 +13,7 @@ class Store extends Product
         $sql = DB::getInstance()->prepare('Select * from Products');
         $sql->execute();
         $total_rows = $sql->rowCount();
-        $limit = 2;
+        $limit = 5;
         $initial_page = ($page_number - 1) * $limit;
         $total_pages = ceil($total_rows / $limit);
         $getQuery = DB::getInstance()->prepare(
@@ -21,14 +21,11 @@ class Store extends Product
         );
         $getQuery->execute();
         $result = $getQuery->setFetchMode(\PDO::FETCH_ASSOC);
-
         $html = "<div class='zigzag-bottom'></div>
         <div class='container'>
             <div class='row'>";
-        foreach (
-            new \RecursiveArrayIterator($getQuery->fetchAll())
-            as $k => $v
-        ) {
+        foreach (new \RecursiveArrayIterator($getQuery->fetchAll())
+            as $k => $v) {
             // echo '<br>';
             // print_r($v);
             // echo '<br>';
@@ -101,10 +98,50 @@ class Store extends Product
         return $html;
     }
 
+    public function sortby($value)
+    {
+        if ($value == 1) {
+            $sql = DB::getInstance()->prepare("Select * from Products ORDER BY productSalePrice ASC");
+        }
+
+        if ($value == 2) {
+            $sql = DB::getInstance()->prepare("Select * from Products ORDER BY product_added_date ASC");
+        }
+
+        $sql->execute();
+        $sql->setFetchMode(\PDO::FETCH_ASSOC);
+        $html = "<div class='zigzag-bottom'></div>
+        <div class='container'>
+            <div class='row'>";
+        foreach (new \RecursiveArrayIterator($sql->fetchAll()) as $k => $v) {
+             // print_r($v);
+             $html .= "<div class='col-md-3 col-sm-6'>
+             <div class='single-shop-product'>
+                 <div class='product-upper' >
+                     <img src='../assests/productsImages/$v[productImage]' alt='' >
+                 </div>
+                 <h2><a href='Store/single-product.php?productId=$v[productId]&productName=$v[productName]'>$v[productName]</a></h2>
+                 <div class='product-carousel-price'>
+                     <ins>$$v[productSalePrice]</ins> <del>$$v[productCostPrice]</del>
+                 </div>
+
+                 <div class='product-option-shop'>
+                     <a class='add_to_cart_button' data-quantity='1' data-product_sku='' data-product_id='$v[productId]' rel='nofollow' href='/canvas/shop/?add-to-cart=70'>Add to cart</a>
+                 </div>
+             </div>
+         </div>";
+            // print_r($v);
+        }
+        $html .= "</div>
+        </div>";
+        return $html;
+    }
+
+
     public function getSearch($parameter)
     {
         $sql = DB::getInstance()->prepare(
-            "Select * from Products where productId='$parameter' or productName LIKE '$parameter%'"
+            "Select * from Products where productCategory Like '$parameter%' or productName LIKE '$parameter%'"
         );
         $sql->execute();
         $sql->setFetchMode(\PDO::FETCH_ASSOC);
@@ -112,7 +149,7 @@ class Store extends Product
         <div class='container'>
             <div class='row'>";
         foreach (new \RecursiveArrayIterator($sql->fetchAll()) as $k => $v) {
-            print_r($v);
+            // print_r($v);
             $html .= "<div class='col-md-3 col-sm-6'>
               <div class='single-shop-product'>
                   <div class='product-upper' >
@@ -134,7 +171,7 @@ class Store extends Product
         return $html;
     }
 
-    public function header($username='',$login = 'Login' ,$cartItem = 0 )
+    public function header($username = '', $login = 'Login', $cartItem = 0)
     {
         $html = "<header>
         <nav class='navbar navbar-expand-sm'>
@@ -148,15 +185,14 @@ class Store extends Product
             $html .= " <li class='nav-item  mx-2'>
                       <a class='nav-link  text-dark' href='../admin/index.php'>$login</a>
                     </li>";
-        }
-        else{
-          $html .= " <li class='nav-item  mx-2'>
+        } else {
+            $html .= " <li class='nav-item  mx-2'>
           <a class='nav-link  text-dark' href='../admin/Signout.php'>$username Signout</a>
         </li>";
         }
-        $html.="
+        $html .= "
                 <li class='nav-item dropdown mx-2'>
-                    <a class='nav-link  text-dark' href='../Store/cart.php'>Cart <span class='badge bg-secondary'>$cartItem</span></a>
+                    <a class='nav-link  text-dark' href='../Store/cart.php'>Cart</a>
                 </li>
                 <li class='nav-item dropdown mx-2'>
                     <a class='nav-link text-dark'>
@@ -181,7 +217,7 @@ class Store extends Product
     </nav>
       </header>";
 
-      return $html;
+        return $html;
     }
 
     public function footer()
@@ -204,7 +240,7 @@ class Store extends Product
             <div class='col-lg-6 col-12'>
               <label class='visually-hidden' for='inlineFormInputGroupUsername'>Search</label>
               <div class='input-group'>
-                <input type='text' class='form-control' id='inlineFormInputGroupUsername' name='query' placeholder='Product, SKU, Category'>
+                <input type='text' class='form-control' id='inlineFormInputGroupUsername' name='query' placeholder='Product, Category'>
               </div>
             </div>
 
@@ -214,7 +250,7 @@ class Store extends Product
                 <option selected>Sort By</option>
                 <option value='1'>Price</option>
                 <option value='2'>Recently Added</option>
-                <option value='3'>Popularity</option>
+             
               </select>
             </div>
 
