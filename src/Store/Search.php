@@ -5,7 +5,7 @@ use App\Store;
 require "../vendor/autoload.php";
 session_start();
 $search = new Store();
-
+$username = $_SESSION['username'][0];
 $parameter = $_GET['query'];
 
 
@@ -68,8 +68,19 @@ $parameter = $_GET['query'];
          echo $search->header();
     }
     ?>
+    <div class="container">
     <?php
+    echo $search->SearchBar();
+    
     echo $search->getSearch($parameter);
     ?>
+    </div>
+    <?php
+    echo $search->footer();
+    ?>
+    
   </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../assests/js/cart.js" rel="text/javascript"></script>
+<script src="../assests/js/sortby.js" rel="text/javascript"></script>
 </html>
