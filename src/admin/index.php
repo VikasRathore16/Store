@@ -1,9 +1,9 @@
 <?php
-// include_once("../Classes/DB.php");
-// include_once("../Classes/User.php");
-// include_once("../Classes/login.php");
+
 
 use App\LogIn;
+
+error_reporting(0);
 
 require_once "../vendor/autoload.php";
 session_start();
